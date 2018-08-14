@@ -58,12 +58,13 @@ def main():
         with open("pickled/data/" + string, "wb") as write_data:
             pickle.dump(data_types[i], write_data)
 
+    random.shuffle(documents)
 
     # training and testing data added to feature sets
     featuresets = [(find_features(review, word_features), category) for (review, category) in documents]
-    random.shuffle(featuresets)
 
     testing_set = featuresets[10000:]
+
     training_set = featuresets[:10000]
 
     print("Training: NB_classifier")

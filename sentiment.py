@@ -62,7 +62,8 @@ def sentiment(text):
                                       LogisticRegression_classifier,
                                       LinearSVC_classifier)
     
-    with open("pickled/data/word_features.pickle", "rb") as word_features:
+    with open("pickled/data/word_features.pickle", "rb") as word_features_file:
+        word_features = pickle.load(word_features_file)
         features = find_features(text, word_features)
 
     return NB_classifier.classify(features)
