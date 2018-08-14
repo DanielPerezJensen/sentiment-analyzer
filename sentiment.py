@@ -35,14 +35,14 @@ def find_features(document, word_features):
     return features
 
 
-def sentiment(text): 
+def sentiment(text):
 
     classifier_strings = ["NB_classifier",
                           "MNB_classifier",
                           "BernoulliNB_classifier",
                           "LogisticRegression_classifier",
                           "LinearSVC_classifier"]
-    
+
     classifiers = []
     for classifier_string in classifier_strings:
         string = "pickled/algorithms/" + classifier_string + ".pickle"
@@ -56,14 +56,14 @@ def sentiment(text):
     LogisticRegression_classifier = classifiers[3]
     LinearSVC_classifier = classifiers[4]
 
-    voted_classifier = VoteClassifier(NB_classifier,
-                                      MNB_classifier,
-                                      BernoulliNB_classifier,
-                                      LogisticRegression_classifier,
-                                      LinearSVC_classifier)
-    
+    voted_clf = VoteClassifier(NB_classifier,
+                               MNB_classifier,
+                               BernoulliNB_classifier,
+                               LogisticRegression_classifier,
+                               LinearSVC_classifier)
+
     with open("pickled/data/word_features.pickle", "rb") as word_features_file:
         word_features = pickle.load(word_features_file)
         features = find_features(text, word_features)
 
-    return voted_classifer.classify(features), voted_classifier.confidence(features)
+    return voted_clf.classify(features), voted_clf.confidence(features)
