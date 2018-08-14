@@ -19,8 +19,8 @@ def find_features(document, word_features):
 
 def main():
 
-    short_pos = open("reviews/positive.txt", "r").read()
-    short_neg = open("reviews/negative.txt", "r").read()
+    short_pos = open("sentiment_data/positive.txt", "r").read()
+    short_neg = open("sentiment_data/negative.txt", "r").read()
 
     # move this up here
     all_words = []
@@ -44,7 +44,6 @@ def main():
             if w[1][0] in allowed_word_types:
                 all_words.append(w[0].lower())
 
-
     all_words = nltk.FreqDist(all_words)
 
     # use 5000 most used words as features
@@ -61,7 +60,8 @@ def main():
     random.shuffle(documents)
 
     # training and testing data added to feature sets
-    featuresets = [(find_features(review, word_features), category) for (review, category) in documents]
+    featuresets = [(find_features(review, word_features), category) for
+                   (review, category) in documents]
 
     testing_set = featuresets[10000:]
 
@@ -75,21 +75,21 @@ def main():
     LogisticRegression_classifier = SklearnClassifier(LogisticRegression())
     LinearSVC_classifier = SklearnClassifier(LinearSVC())
 
-    classifiers = [NB_classifier, 
-                   MNB_classifier, 
-                   BernoulliNB_classifier, 
-                   LogisticRegression_classifier, 
+    classifiers = [NB_classifier,
+                   MNB_classifier,
+                   BernoulliNB_classifier,
+                   LogisticRegression_classifier,
                    LinearSVC_classifier]
-    
+
     classifier_strings = ["NB_classifier",
                           "MNB_classifier",
                           "BernoulliNB_classifier",
                           "LogisticRegression_classifier",
                           "LinearSVC_classifier"]
-    
+
     # loop through all classifiers and save it as a .pickle
     for i in range(len(classifiers)):
-        
+
         if classifier_strings[i] is not "NB_classifier":
             print("Training: " + classifier_strings[i])
             classifiers[i].train(training_set)
@@ -100,6 +100,7 @@ def main():
         with open("pickled/algorithms/" + string, "wb") as write_data:
             pickle.dump(classifiers[i], write_data)
         print("Done Pickling: " + string)
+
 
 if __name__ == "__main__":
     main()
