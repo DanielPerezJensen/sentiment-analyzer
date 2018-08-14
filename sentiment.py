@@ -66,4 +66,4 @@ def sentiment(text):
         word_features = pickle.load(word_features_file)
         features = find_features(text, word_features)
 
-    return NB_classifier.classify(features)
+    return voted_classifer.classify(features), voted_classifier.confidence(features)
