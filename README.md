@@ -26,7 +26,7 @@ If you wish to use this classifier for yourself do the following steps:
    * from sentiment import sentiment
    * print(sentiment("This movie was great"))
    * print(sentiment("I have had a really bad afternoon to be honest"))
-   * Output: <sentiment classification> <classification confidence>
+   * Output: *classification confidence*
 
 
 ##### *_With thanks to Sentdex from [pythonprogramming.net](https://pythonprogramming.net/) for coding examples and the training data._*
