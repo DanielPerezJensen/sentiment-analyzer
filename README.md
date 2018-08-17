@@ -24,11 +24,12 @@ If you wish to use this classifier for yourself do the following steps:
     2. python3.6 train_clf.py
 3. Now you can import sentiment.py in files that are in the *sentiment-analyzer* directory.
 4. * Usage:
-   * from sentiment import sentiment
-   * print(sentiment("This movie was great"))
-   * print(sentiment("I have had a really bad afternoon to be honest"))
-   * Output: *classification confidence*
-   * Output Example: pos 0.8
-
+```python
+   >> from sentiment import sentiment
+   >> print(sentiment("This movie was great"))
+   >> pos 1
+   >> print(sentiment("I have had a really bad afternoon to be honest"))
+   >> neg 1 
+```
 
 ##### *_With thanks to Sentdex from [pythonprogramming.net](https://pythonprogramming.net/) for coding examples and the training data._*
