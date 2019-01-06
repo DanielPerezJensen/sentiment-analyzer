@@ -17,7 +17,7 @@ All classifiers were trained on 10.000 short reviews of movies that were either 
 If you wish to use this classifier for yourself do the following steps:
 1. git clone https://github.com/DanielPerezJensen/sentiment-analyzer.git
 2. cd sentiment-analyzer
-* If you want to train the classifiers yourself or on other data do this:
+* If you want to train the classifiers on other data do this:
     1. Put positive reviews in "sentiment_data/positive" and negative reviews in "sentiment_data/negative". Separate  every review by a newline.
 3. python3.6 train_clf.py
 4. If you get an error create these directories: **pickled/data** and **pickled/algorithms**
